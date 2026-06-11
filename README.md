@@ -2,7 +2,7 @@
 Welcome to my Flutter projects repository! This repo contains Flutter ongoing project.
 
 # Projects
-#1. Personal Expense Tracker App (Ongoing Project)
+# 1. Personal Expense Tracker App (Ongoing Project)
 Description: A note-taking app with local data storage using SQFlite.
 Features:
 - Add, edit, and delete expense
