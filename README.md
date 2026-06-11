@@ -18,8 +18,8 @@ Best Practices: Clean architecture, responsive UI
 Each project is in its own folder with source code.
 
 # 🔗 Links
-Portfolio: https://nischalgiri.com.np/␠␠
-LinkedIn: https://www.linkedin.com/in/nischal-giri-749679402/␠␠
+Portfolio: https://nischalgiri.com.np/  
+LinkedIn: https://www.linkedin.com/in/nischal-giri-749679402/  
 GitHub: https://github.com/NischalGirii/Flutter-projects/
 
 I am continuously working on new projects to expand my Flutter expertise. Contributions, feedback, and suggestions are always welcome!
