@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "175018446443",
+    "project_id": "expensetracker-cbeb2",
+    "storage_bucket": "expensetracker-cbeb2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175018446443:android:a9b9e7f6d3b5ac25212b2e",
+        "android_client_info": {
+          "package_name": "com.example.personal_expense_tracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByrHvHJ1WWZTtV45Gnu6txVemyfw67kwA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
