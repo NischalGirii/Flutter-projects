@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_expense_tracker/firebase_options.dart';
-import 'package:personal_expense_tracker/screen/authenticate/login.dart';
-import 'package:personal_expense_tracker/screen/authenticate/register.dart';
+import 'package:personal_expense_tracker/screen/authenticate/authenticate.dart';
+import 'package:personal_expense_tracker/screen/authenticate/sign_in.dart';
 import 'package:personal_expense_tracker/screen/wrapper.dart';
 
 

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expense_tracker/screen/authenticate/authenticate.dart';
+import 'package:personal_expense_tracker/services/auth.dart';
 
-import 'package:get/get.dart';
-
-class Login extends StatefulWidget {
-  const Login({super.key});
+class SignIn extends StatefulWidget {
+  const SignIn({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<SignIn> createState() => _SignInState();
 }
 
-class _LoginState extends State<Login> {
+class _SignInState extends State<SignIn> {
+  
+  final AuthService _auth = AuthService();
 
   TextEditingController username = TextEditingController();
   TextEditingController password= TextEditingController();
@@ -63,9 +65,30 @@ class _LoginState extends State<Login> {
               foregroundColor: Colors.white
             ),
             onPressed: () {
-              // login(username.text, password.text);
+              
             }, 
           child: Text("Login") ),
+
+         
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              fixedSize: Size(480, 40),
+              backgroundColor: Colors.black,
+              foregroundColor: Colors.white
+            ),
+            onPressed: () async {
+              dynamic result = await _auth.signInAnonymous();
+              if (result == null){
+                print("error siginig in");
+              }
+              else{
+                print("eigned in");
+              }
+              print(result);
+            }, 
+          child: Text("Login Anonymous") ),
+
+          
 
           ElevatedButton(
             style: ElevatedButton.styleFrom(

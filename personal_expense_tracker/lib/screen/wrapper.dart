@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_expense_tracker/screen/authenticate/login.dart';
+import 'package:personal_expense_tracker/screen/authenticate/authenticate.dart';
 import 'package:personal_expense_tracker/screen/home/home.dart';
 
 class Wrapper extends StatelessWidget {
@@ -9,6 +9,6 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
 
     // return either Home or Authenticate widget
-    return Login();
+    return Authenticate();
   }
 }
