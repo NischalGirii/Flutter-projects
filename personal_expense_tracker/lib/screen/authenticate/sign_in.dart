@@ -93,7 +93,7 @@ class _SignInState extends State<SignIn> {
 
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              fixedSize: Size(480, 40),
+              fixedSize: Size(480, 40), 
               backgroundColor: Colors.white,
               foregroundColor: Colors.black,
               side: BorderSide(

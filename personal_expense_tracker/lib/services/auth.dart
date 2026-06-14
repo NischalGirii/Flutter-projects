@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:personal_expense_tracker/models/user.dart';
 class AuthService {
 
@@ -9,6 +10,12 @@ class AuthService {
      return user != null ? CustomUser(uid: user.uid) : null;
   }
 
+  // auth change user steam
+  Stream get user {
+  return _auth.authStateChanges()
+  // .map((User? user) => _userFromFirebaseUser(user));
+  .map(_userFromFirebaseUser);
+  }
 
 
 
