@@ -3,11 +3,19 @@ Welcome to my Flutter projects repository! This repo contains Flutter ongoing pr
 
 # Projects
 # 1. Personal Expense Tracker App (Ongoing Project)
-Description: A note-taking app with local data storage using SQFlite.
+Description: A expense tracker app with firebase auth.
 Features:
 - Add, edit, and delete expense
 - Persistent local storage
 - Clean and responsive UI
+  
+# 2. Personal Task Management App
+Description: A note-taking app with local data storage using local storage.
+Features: 
+- Authentication
+- Add task, delete task
+- Select task
+  
 # 📌 Skills Demonstrated
 Flutter & Dart: UI design, state management, navigation
 State Management: BLoC pattern
