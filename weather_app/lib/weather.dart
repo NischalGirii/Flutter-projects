@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/location.dart';
 import 'package:weather_app/network/api_service.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:weather_app/search.dart';
 
 class Weather extends StatefulWidget {
   const Weather({super.key});
@@ -9,6 +12,8 @@ class Weather extends StatefulWidget {
 }
 
 class _WeatherState extends State<Weather> {
+
+  
 
   final WeatherApi weatherApi = WeatherApi();
   final TextEditingController cityController = TextEditingController();
@@ -109,6 +114,54 @@ Widget build(BuildContext context) {
         ],
       ),
     ),
+
+
+
+    
+    bottomNavigationBar: GNav(
+
+      
+      onTabChange: (index) {
+        switch (index) {
+          case 0:
+            break; // Already on Home
+
+          case 1:
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const Search(),
+              ),
+            );
+            break;
+
+          case 2:
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const Location(),
+              ),
+            );
+            break;
+        }
+      },
+      tabs: const [
+        GButton(
+          icon: Icons.home,
+          text: 'Home',
+        ),
+        GButton(
+          icon: Icons.search,
+          text: 'Search',
+        ),
+        GButton(
+          icon: Icons.location_on,
+          text: 'Location',
+        ),
+      ],
+    ),
+    
   );
+
 }
 }
