@@ -1,13 +1,28 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:personal_expense_tracker/screen/authenticate/register.dart';
 import 'package:personal_expense_tracker/screen/authenticate/sign_in.dart';
 
-class Authenticate extends StatelessWidget {
+class Authenticate extends StatefulWidget {
   const Authenticate({super.key});
 
   @override
+  State<Authenticate> createState() => _AuthenticateState();
+}
+
+class _AuthenticateState extends State<Authenticate> {
+  bool showSignIn = true;
+
+  void toggleView() {
+     setState(() => showSignIn = !showSignIn);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SignIn(),
-    );
+    if (showSignIn){
+      return SignIn(toggleView : toggleView);
+    }
+    else{
+      return Register(toggleView : toggleView);
+    }
   }
 }

@@ -1,29 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:personal_expense_tracker/screen/authenticate/authenticate.dart';
-import 'package:personal_expense_tracker/screen/authenticate/register.dart';
+import 'package:flutter/widgets.dart';
 import 'package:personal_expense_tracker/services/auth.dart';
 
-class SignIn extends StatefulWidget {
-  // const SignIn({super.key});
+class Register extends StatefulWidget {
+  // const Register({super.key});
+
   final Function toggleView;
-  SignIn({required this.toggleView});
+  Register({required this.toggleView});
   @override
-  State<SignIn> createState() => _SignInState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   
   final AuthService _auth = AuthService();
-
   String email = '';
   String password = '';
-
-
   @override
+    
+
   Widget build(BuildContext context) {
     return  Scaffold(
-     
-     body: Padding(
+      body: Padding(
        padding: const EdgeInsets.all(8.0),
        child: Column(spacing: 20,
         children: [
@@ -79,27 +77,10 @@ class _SignInState extends State<SignIn> {
               print(password);
 
             }, 
-          child: Text("Login") ),
+          child: Text("Register") ),
 
          
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              fixedSize: Size(480, 40),
-              backgroundColor: Colors.black,
-              foregroundColor: Colors.white
-            ),
-            onPressed: () async {
-              dynamic result = await _auth.signInAnonymous();
-              if (result == null){
-                print("error siginig in");
-              }
-              else{
-                print("signed in");
-                 print(result.uid);
-              }
-             
-            }, 
-          child: Text("Login Anonymous") ),
+         
 
           
 
@@ -117,12 +98,11 @@ class _SignInState extends State<SignIn> {
             onPressed: () {
               widget.toggleView();
             }, 
-          child: Text("Create new account"))
+          child: Text("I already have an account"))
         ],
        ),
      ),
 
-     
     );
   }
 }
