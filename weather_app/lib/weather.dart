@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/location.dart';
 import 'package:weather_app/network/api_service.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:weather_app/search.dart';
+
 
 class Weather extends StatefulWidget {
   const Weather({super.key});
@@ -13,7 +12,9 @@ class Weather extends StatefulWidget {
 
 class _WeatherState extends State<Weather> {
 
-  
+
+
+   
 
   final WeatherApi weatherApi = WeatherApi();
   final TextEditingController cityController = TextEditingController();
@@ -53,64 +54,71 @@ Widget build(BuildContext context) {
       centerTitle: true,
     ),
     body: Padding(
+      
       padding: const EdgeInsets.all(16),
       child: Column(
+        
         children: [
-          TextField(
-            controller: cityController,
-            decoration: const InputDecoration(
-              labelText: "Enter City",
-              border: OutlineInputBorder(),
-            ),
-          ),
-
-          const SizedBox(height: 10),
-
-          ElevatedButton(
-            onPressed: loadWeather,
-            child: const Text("Get Weather"),
-          ),
+        
 
           const SizedBox(height: 20),
-
-          if (isLoading)
-            const CircularProgressIndicator(),
+          Center(child: Text("Press search icon for weather info")),
+           if (isLoading)
+                          const CircularProgressIndicator(),
 
           if (weatherData != null)
-            Card(
-              elevation: 4,
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    Text(
-                      weatherData!['city'],
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
+          
+            Expanded(
+              child: SizedBox(
+                width: double.infinity,
+                child: Card(
+                  
+                  elevation: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      children: [
+                        Text("Todays Weather"),
+                        SizedBox(height: 80,),
+                        Image.network(
+                          width: 200, height: 200,
+                          'https://cdn-icons-png.flaticon.com/512/869/869869.png',
+                        ),
+                       
+                        SizedBox(height: 30,),
+                         if (isLoading)
+                          const CircularProgressIndicator(),
+                        Text(
+                          weatherData!['city'],
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                
+                        Text(
+                          "${weatherData!['temperature']} °C",
+                          style: const TextStyle(fontSize: 20),
+                        ),
+                
+                        Text(
+                          "Humidity: ${weatherData!['humidity']}%",
+                        ),
+                
+                        Text(
+                          "Wind: ${weatherData!['wind']} km/h",
+                        ),
+                
+                        Text(
+                          "Pressure: ${weatherData!['pressure']} hPa",
+                        ),
+                      ],
                     ),
-
-                    Text(
-                      "${weatherData!['temperature']} °C",
-                      style: const TextStyle(fontSize: 20),
-                    ),
-
-                    Text(
-                      "Humidity: ${weatherData!['humidity']}%",
-                    ),
-
-                    Text(
-                      "Wind: ${weatherData!['wind']} km/h",
-                    ),
-
-                    Text(
-                      "Pressure: ${weatherData!['pressure']} hPa",
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
+         
         ],
       ),
     ),
@@ -124,25 +132,44 @@ Widget build(BuildContext context) {
       onTabChange: (index) {
         switch (index) {
           case 0:
-            break; // Already on Home
+             
+            break; 
 
           case 1:
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (_) => const Search(),
-              ),
-            );
-            break;
+           showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text("Enter City"),
+                      content: TextField(
+                        controller: cityController,
+                        decoration: InputDecoration(
+                          hintText: "Enter City for Weather Info",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text("Cancel"),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            loadWeather();
+                            Navigator.pop(context);
+                          },
+                          child: const Text("Get Weather"),
+                        ),
+                      ],
+                    );
+                  },
+                );
 
-          case 2:
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (_) => const Location(),
-              ),
-            );
-            break;
+            
         }
       },
       tabs: const [
@@ -154,10 +181,10 @@ Widget build(BuildContext context) {
           icon: Icons.search,
           text: 'Search',
         ),
-        GButton(
-          icon: Icons.location_on,
-          text: 'Location',
-        ),
+        // GButton(
+        //   icon: Icons.location_on,
+        //   text: 'Location',
+        // ),
       ],
     ),
     
