@@ -15,6 +15,13 @@ Features:
 - Authentication
 - Add task, delete task
 - Select task
+
+# 3. Weather App
+Description: A weather app which provide temperature, humidity and wind speed information by city.
+Features:
+- Home page with temperature information.
+- Search page
+- Popular cities.
   
 # 📌 Skills Demonstrated
 Flutter & Dart: UI design, state management, navigation
