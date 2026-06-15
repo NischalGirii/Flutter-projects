@@ -11,15 +11,13 @@ class AuthService {
   }
 
   // auth change user steam
-  Stream get user {
+  Stream<CustomUser?> get user {
   return _auth.authStateChanges()
   // .map((User? user) => _userFromFirebaseUser(user));
   .map(_userFromFirebaseUser);
   }
 
-
-
-
+ 
   // sign in anonymous
 
   Future signInAnonymous() async{
@@ -38,4 +36,14 @@ class AuthService {
   // register with email and password
 
   //sign out 
+
+  Future signOut() async{
+    try{
+        return await _auth.signOut();
+    }
+    catch(e){
+        print(e.toString());
+        return null;
+    }
+  }
 }
