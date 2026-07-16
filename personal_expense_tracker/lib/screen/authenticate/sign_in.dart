@@ -12,12 +12,12 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  
+  final _formKey = GlobalKey<FormState>();
   final AuthService _auth = AuthService();
 
   String email = '';
   String password = '';
-
+   String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -37,37 +37,53 @@ class _SignInState extends State<SignIn> {
           ),),
 
           SizedBox(height: 30,),
-          TextFormField(
-            onChanged:(value) {
-              setState(() =>email = value);
-            },
-            
-            decoration: InputDecoration(
-              hint: Text("Enter email"),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16)
-              )
-            ),
-          ),
-          
-          // SizedBox(height: 20,),
-           TextFormField(
-            obscureText: true,
-            onChanged: (value) {
-              setState(() => password = value);
-              
-            },
-            
-            decoration: InputDecoration(
-              
-              hint: Text("Enter password"),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16)
-              )
-            ),
-          ),
 
-          SizedBox(height: 30,),
+          Form(
+            
+            key: _formKey,
+            child: Column(
+              spacing: 20,
+              children: [
+                TextFormField(
+                  
+                  validator: (value) => value!.isEmpty ? "Enter a valid email" : null,
+                  onChanged:(value) {
+                    setState(() =>email = value);
+                  },
+                  
+                  decoration: InputDecoration(
+                    hint: Text("Enter email"),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16)
+                    )
+                  ),
+                ),
+
+
+                  TextFormField(
+                  validator:(value) => value!.length <8 ? "Password must be atleast 8 character":null ,
+                  obscureText: true,
+                  onChanged: (value) {
+                    setState(() => password = value);
+                    
+                  },
+                  
+                  decoration: InputDecoration(
+                    
+                    hint: Text("Enter password"),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16)
+                    )
+                  ),
+                ),
+              ],
+            ),
+          
+          ),
+          SizedBox(height: 12,),
+        
+          Text(error,
+          style: TextStyle(color: Colors.red, fontSize: 14),),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               fixedSize: Size(480, 40),
@@ -75,10 +91,17 @@ class _SignInState extends State<SignIn> {
               foregroundColor: Colors.white
             ),
             onPressed: () async{
-              print(email);
-              print(password);
+               if(_formKey.currentState!.validate()){
+                dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+                if(result == null){
+                  setState(() {
+                    error = 'Could Not Signin With Thought Credentials';
+                  });
+                }
+              }
 
             }, 
+            
           child: Text("Login") ),
 
          

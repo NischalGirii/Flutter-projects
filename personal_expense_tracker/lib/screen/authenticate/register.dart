@@ -36,7 +36,7 @@ class _RegisterState extends State<Register> {
             fontSize: 20,
           ),),
 
-          SizedBox(height: 30,),
+          SizedBox(height: 30,), 
           Form(
             
             key: _formKey,
@@ -60,7 +60,7 @@ class _RegisterState extends State<Register> {
 
 
                   TextFormField(
-                    validator:(value) => value!.length <8 ? "Password must be atleast 8 character":null ,
+                  validator:(value) => value!.length <8 ? "Password must be atleast 8 character":null ,
                   obscureText: true,
                   onChanged: (value) {
                     setState(() => password = value);
@@ -83,7 +83,11 @@ class _RegisterState extends State<Register> {
           // SizedBox(height: 20,),
          
 
-          SizedBox(height: 30,),
+           SizedBox(height: 30,),
+         Text(
+          error,
+          style:TextStyle(color: Colors.red, fontSize: 14) ,
+         ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               fixedSize: Size(480, 40),
@@ -103,7 +107,7 @@ class _RegisterState extends State<Register> {
             }, 
           child: Text("Register") ),
 
-         
+        
          
 
           
